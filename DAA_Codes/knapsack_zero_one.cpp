@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int knapsackZeroOne(int index, int sackWt, vector<int>& wt, vector<int>& val) {
+int knapsackZeroOne(int index, int sackWt, vector<int> wt, vector<int> val) {
     if (index == 0) {
         if (wt[0] <= sackWt) {
             return val[0];

@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-double knapsackFractional(vector<pair<int, int>>& sack, int sackWt) {
+double knapsackFractional(vector<pair<int, int>> sack, int sackWt) {
     double maxProfit = 0;
 
     for (int i = 0; i < sack.size(); i++) {

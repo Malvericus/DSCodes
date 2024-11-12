@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 void floydWarshallAlgorithm(vector<vector<int>>& matrix) {
@@ -22,9 +20,7 @@ void floydWarshallAlgorithm(vector<vector<int>>& matrix) {
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (matrix[i][k] < 1e9 && matrix[k][j] < 1e9) {
-                    matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
-                }
+                matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
             }
         }
     }
@@ -43,12 +39,14 @@ int main() {
     int V = 4;
     vector<vector<int>> matrix(V, vector<int>(V, -1)); // Initialize the adjacency matrix
 
-    matrix[0][1] = 2;
-    matrix[1][0] = 1;
-    matrix[1][2] = 3;
-    matrix[3][0] = 3;
-    matrix[3][1] = 5;
-    matrix[3][2] = 4;
+    matrix[0][1] = 7;
+    matrix[0][3] = 1;
+    matrix[1][0] = 7;
+    matrix[1][2] = 2;
+    matrix[2][1] = 2;
+    matrix[2][3] = 3;
+    matrix[3][0] = 1;
+    matrix[3][2] = 3;
 
     floydWarshallAlgorithm(matrix);
 
