@@ -36,23 +36,33 @@ class Dijkstra {
     }
 };
 
+// edges = { {0, 1, 4}, {0, 2, 4}, {1, 2, 2}, {2, 3, 3}, {2, 5, 6}, {2, 4, 1}, {3, 5, 2}, {4, 5, 3} };
 int main() {
-    int V = 6, S = 0;
-    vector<vector<int>> adj[V];
-    vector<vector<int>> edges = { {0, 1, 4}, {0, 2, 4}, {1, 2, 2}, {2, 3, 3}, {2, 5, 6}, {2, 4, 1}, {3, 5, 2}, {4, 5, 3} };
+    int V, E, S;
+    cout << "Enter number of vertices: ";
+    cin >> V;
+    cout << "Enter number of edges: ";
+    cin >> E;
 
-    for (auto it : edges) {
-        vector<int> temp(2);
-        temp[0] = it[1];
-        temp[1] = it[2];
-        adj[it[0]].push_back(temp);
+    vector<vector<int>> adj[V];
+    cout << "Enter the edges (source, destination, weight):\n";
+    for (int i = 0; i < E; i++) {
+        int u, v, w;
+        cin >> u >> v >> w;
+
+        // Add the edge to adjacency list
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w}); // If the graph is undirected
     }
+
+    cout << "Enter source vertex: ";
+    cin >> S;
 
     Dijkstra d;
     vector<int> result = d.dijkstra(V, adj, S);
 
-    for (int i = 0; i < result.size(); i++)
-    {
+    cout << "Shortest distances from source node " << S << ":\n";
+    for (int i = 0; i < result.size(); i++) {
         cout << "Node " << i << ": " << result[i] << endl;
     }
 
